@@ -1,0 +1,25 @@
+// COMANDOS
+
+// ADICIONAR STATUS
+status.atri(inteligência, força, vida);
+
+// ADICIONAR EXPERIÊNCIA
+status.exp(experiência);
+
+// GERAR NÚMERO ALEATÓRIO
+Random radom  = new Random();
+int numeroTmp = 0;
+for(int i=0;i<1; i++) {
+numeroTmp=radom.nextInt(7);
+System.out.println(">"+numeroTmp);
+}
+
+// COMANDOS RÁDIO
+/* FUNCIONA PARA VOZES TAMBÉM */
+radio.pausarMusicaFundo(true);
+radio.pausarMusicaFundo(false);
+acaoMusicaFundo();
+
+
+
+
