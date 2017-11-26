@@ -20,6 +20,7 @@ public class Biblioteca {
         VITORIA("Vitória - MP3", "arquivos/voz/vitoria.mp3", Formatos.MP3),
         DERROTA("Derrota - MP3", "arquivos/voz/derrota.mp3", Formatos.MP3),
         PARAFUSO("Parafuso - MP3", "arquivos/voz/parafusos.mp3", Formatos.MP3),
+        INCLUIR("NOME", "CAMINHO", Formatos.MP3),
         BOSS("Boss - MP3", "arquivos/voz/boss.mp3", Formatos.MP3)
         ;
 
