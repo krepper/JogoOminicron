@@ -13,16 +13,46 @@ import javax.swing.JFrame;
  * @author Biblioteca bc
  */
 public class faseMaker {
+    public static boolean inicarMenu = true;
     
     public static void menu(){
-        Janela menu = new Janela();
-        menu.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        menu.setVisible(true);
+        if(inicarMenu == true){
+            Janela menu = new Janela();
+            menu.setTitle("JOGO OMINICRON - MENU");
+            menu.setExtendedState(JFrame.MAXIMIZED_BOTH);
+            menu.setVisible(true);
+            
+            /* 
+                rodarMenu(String vozMenu, int teclaConfirmar)
+            
+                EXEMPLO:
+                vozMenu = Biblioteca.SonsVoz.INTRODUCAO 
+                teclaConfirmar = 10 (enter) [teclaConfirmar recebe ID da tecla]
+            
+                OBS: Os ID das teclas estaram em um arquivo na pasta principal do projeto
+            */
         
-        /* ARGUMENTOS 
-            rodarFase(String nomeFase, String vozPrincipal, String vozAjuda, int opc1, int opc2, int opc3)
+            int opcao = menu.rodarMenu("Biblioteca.SonsVoz.INTRODUCAO");
         
-        */
+            switch(opcao){
+                case 13:
+                    // CONDICOES
+                    break;
+                    
+                case 27:
+                    System.exit(0);
+                    break;
+                
+                case 32:
+                    System.out.println("Repetindo áudio... "); // REPETE O ÁUDIO DO MENU
+                    menu.iniciarVoz("Biblioteca.SonsVoz.INTRODUCAO", 100, false);
+                    break;  
+                
+                default:
+                    break;
+            }
         
+        }
     }
 }
+

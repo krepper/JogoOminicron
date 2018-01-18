@@ -24,7 +24,6 @@ import javax.imageio.ImageIO;
 import javax.swing.BoxLayout;
 import javax.swing.GroupLayout;
 import javax.swing.ImageIcon;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
@@ -36,8 +35,6 @@ import javax.swing.SwingConstants;
  * @author Biblioteca bc
  */
 public class Janela extends Frame {
-
-    public static String faseNome;
     
     public Radio radio;
     private final GroupLayout layout = new GroupLayout(this);
@@ -47,27 +44,19 @@ public class Janela extends Frame {
     // VARIÁVEIS FASE MAKER
     PlayerMp3Wav playerMusicaVoz;
     Thread threadMusicaVoz;
-    int volume;
-    boolean repetirAudio;
     int respostaCerta;
     String vozPrincipal;
     String vozAjuda;
     boolean ganhou = false;
+    int opcao;
     // VARIÁVEIS FASE MAKER - FIM
     
-    
-    // VARIÁVEIS PARA COMEÇAR O JOGO
-    
-    boolean inicioMenu = true;
-    boolean fase1 = false;
-    
-    // VARIÁVEIS PARA COMEÇAR O JOGO - FIM
      
     public Janela(){
         imgFundo = ("arquivos/logo.png");
         radio = new Radio();
         criaInterface();
-        inicioMenu();
+        //inicioMenu();
     }
     
     /* FASE MAKER */
@@ -81,64 +70,40 @@ public class Janela extends Frame {
         radio.tocar(Biblioteca.SonsVoz.NENHUMA_MUSICA, 50); //PAUSA A MÚSICA DE FUNDO
     }
     
-    void iniciarVoz(String arquivo){
-        playerMusicaVoz = new PlayerMp3Wav(arquivo, volume, repetirAudio);
+    void iniciarVoz(String arquivo, int volume, boolean repetir){
+        playerMusicaVoz = new PlayerMp3Wav(arquivo, volume, repetir);
         threadMusicaVoz = new Thread(playerMusicaVoz);
         threadMusicaVoz.start();
     }
     
-    boolean rodarMenu(){
-        radio.tocar(Biblioteca.SonsVoz.INTRODUCAO, 80);
-        this.addKeyListener(new KeyAdapter() {     
-        @Override            
-        public void keyPressed(KeyEvent e) {
+    /*
+    EXEMPLO:
+    vozMenu = Biblioteca.SonsVoz.INTRODUCAO 
+    teclaConfirmar = 10 (enter) [teclaConfirmar recebe ID da tecla]
+    
+    */
+    
+    int rodarMenu(String vozMenu){
+        iniciarVoz(vozMenu, 100, false);
+      
+        this.addKeyListener(new KeyAdapter() {       
+        @Override
+        public void keyPressed(KeyEvent tecla) {
            
-            if (inicioMenu==true) {
-                radio.tocar(Biblioteca.SonsCurtos.BUTTON_POSITIVE, 05);
-                //menu inicial
-
-                switch (e.getKeyCode()) {
-                    case 10:
-                        //* ENTER *
-                        inicioMenu = false;
-                        fase1 = true;
-
-                        //faseMaker.fase1(); // INICIA O JOGO
-                        break;
-                            
-                    case 27:
-                        //* ESC *
-                        System.exit(0); // FECHA O JOGO
-                        
-                    case 8:
-                        //* BACKSPACE *
-                        //menuDeOpcoes();
-                        //inicioMenu = false; // CHAMA O MENU DE OPÇÕES (NÃO FEITO AINDA)
-                        //menuDeOpcoes = true;
-                        break;
-                            
-                    case 32:
-                        //* ESPAÇO *
-                        System.out.println("Você apertou espaço");
-                        System.out.println("Repetindo áudio... (Introdução)"); // REPETE O ÁUDIO DO MENU
-                        radio.tocar(Biblioteca.SonsVoz.INTRODUCAO, 80);
-                        break;
-                       
-                        default:
-                            break;
-                }
-            }
+            radio.tocar(Biblioteca.SonsCurtos.BUTTON_POSITIVE, 05);
+            //menu inicial
+   
+            opcao = tecla.getKeyCode();       
+         
         }
-        });
+        });       
         
-        
-        return false;
+        return opcao;
     }
     
     boolean rodarFase(){
         mutar();
-        mudaJanela(faseNome);
-        iniciarVoz(vozPrincipal);
+        iniciarVoz(vozPrincipal, 100, false);
         
         this.addKeyListener(new KeyAdapter() {
             int erros = 0; 
@@ -156,7 +121,7 @@ public class Janela extends Frame {
                 System.out.print("Número de erros: ");
                 System.out.println(erros);
                 if (erros==3){ // CASO ERRE 3 VEZES ÁUDIO DE AJUDA É EXECUTADO
-                    iniciarVoz(vozAjuda); 
+                    iniciarVoz(vozAjuda, 100, false); 
                     erros=0;
                    }
                 }
@@ -167,13 +132,7 @@ public class Janela extends Frame {
         return ganhou;
     }
     
-    /* FIM FASE MAKER */
-    
-
-
-    
-
-    
+    /* FIM FASE MAKER */  
     
 
     private void criaInterface() {
@@ -186,8 +145,6 @@ public class Janela extends Frame {
         panelInterno.setOpaque(false);
         panelInterno.setLayout(new BoxLayout(panelInterno, BoxLayout.Y_AXIS));
                       
-
-        this.setTitle(faseNome);
         layout.setHorizontalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
