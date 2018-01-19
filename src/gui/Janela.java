@@ -6,6 +6,7 @@
 package gui;
 
 import audio.Biblioteca;
+import audio.Biblioteca.SonsVoz;
 import audio.PlayerMp3Wav;
 import audio.Radio;
 import java.awt.Dimension;
@@ -45,7 +46,7 @@ public class Janela extends Frame {
     PlayerMp3Wav playerMusicaVoz;
     Thread threadMusicaVoz;
     int respostaCerta;
-    String vozPrincipal;
+    SonsVoz vozPrincipal;
     String vozAjuda;
     boolean ganhou = false;
     int opcao;
@@ -66,14 +67,18 @@ public class Janela extends Frame {
     }
     
     void mutar(){
-        radio.tocar(Biblioteca.SonsFundo.NENHUMA_MUSICA, 50, false); //PAUSA A MÚSICA DE FUNDO
-        radio.tocar(Biblioteca.SonsVoz.NENHUMA_MUSICA, 50); //PAUSA A MÚSICA DE FUNDO
+        radio.tocarF(Biblioteca.SonsFundo.NENHUMA_MUSICA, 50, false); //PAUSA A MÚSICA DE FUNDO
+        radio.tocarV(Biblioteca.SonsVoz.NENHUMA_MUSICA, 50); //PAUSA A MÚSICA DE FUNDO
     }
     
-    void iniciarVoz(String arquivo, int volume, boolean repetir){
-        playerMusicaVoz = new PlayerMp3Wav(arquivo, volume, repetir);
-        threadMusicaVoz = new Thread(playerMusicaVoz);
-        threadMusicaVoz.start();
+//    void iniciarVoz(String arquivo, int volume, boolean repetir){
+//        playerMusicaVoz = new PlayerMp3Wav(arquivo, volume, repetir);
+//        threadMusicaVoz = new Thread(playerMusicaVoz);
+//        threadMusicaVoz.start();
+//    }
+    
+    void iniciarVoz(SonsVoz master, int volume){
+        radio.tocarV(master, volume);
     }
     
     /*
@@ -83,14 +88,14 @@ public class Janela extends Frame {
     
     */
     
-    int rodarMenu(String vozMenu){
-        iniciarVoz(vozMenu, 100, false);
+    int rodarMenu(SonsVoz vozP){
+        radio.tocarV(vozP, NORMAL);
       
         this.addKeyListener(new KeyAdapter() {       
         @Override
         public void keyPressed(KeyEvent tecla) {
            
-            radio.tocar(Biblioteca.SonsCurtos.BUTTON_POSITIVE, 05);
+            radio.tocarC(Biblioteca.SonsCurtos.BUTTON_POSITIVE, 05);
             //menu inicial
    
             opcao = tecla.getKeyCode();       
@@ -103,7 +108,7 @@ public class Janela extends Frame {
     
     boolean rodarFase(){
         mutar();
-        iniciarVoz(vozPrincipal, 100, false);
+        radio.tocarV(vozPrincipal, 80);
         
         this.addKeyListener(new KeyAdapter() {
             int erros = 0; 
@@ -111,7 +116,7 @@ public class Janela extends Frame {
             @Override
                 public void keyPressed(KeyEvent e) {
                 System.out.println("clicou " + e.getKeyCode());
-                radio.tocar(Biblioteca.SonsCurtos.BUTTON_POSITIVE, 05);
+                radio.tocarC(Biblioteca.SonsCurtos.BUTTON_POSITIVE, 05);
                 if (e.getKeyCode() == respostaCerta){
                     ganhou = true;
                 } else {
@@ -121,7 +126,7 @@ public class Janela extends Frame {
                 System.out.print("Número de erros: ");
                 System.out.println(erros);
                 if (erros==3){ // CASO ERRE 3 VEZES ÁUDIO DE AJUDA É EXECUTADO
-                    iniciarVoz(vozAjuda, 100, false); 
+                    radio.tocarV(vozPrincipal, 80); 
                     erros=0;
                    }
                 }

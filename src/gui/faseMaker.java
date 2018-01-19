@@ -32,7 +32,7 @@ public class faseMaker {
                 OBS: Os ID das teclas estaram em um arquivo na pasta principal do projeto
             */
         
-            int opcao = menu.rodarMenu("Biblioteca.SonsVoz.INTRODUCAO");
+            int opcao = menu.rodarMenu(audio.Biblioteca.SonsVoz.INTRODUCAO);
         
             switch(opcao){
                 case 13:
@@ -45,7 +45,7 @@ public class faseMaker {
                 
                 case 32:
                     System.out.println("Repetindo áudio... "); // REPETE O ÁUDIO DO MENU
-                    menu.iniciarVoz("Biblioteca.SonsVoz.INTRODUCAO", 100, false);
+                    menu.iniciarVoz(audio.Biblioteca.SonsVoz.INTRODUCAO, 100);
                     break;  
                 
                 default:

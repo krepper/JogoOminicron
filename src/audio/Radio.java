@@ -14,12 +14,12 @@ public class Radio {
     public Radio() {
     }
 
-     public void tocar(SonsCurtos arquivoSom, int volume) {
+     public void tocarC(SonsCurtos arquivoSom, int volume) {
         PlayerMp3Wav executorSom = new PlayerMp3Wav(arquivoSom.getArquivo(), volume, false);
         new Thread(executorSom).start(); // Inica thread para tocar o som, que é curto e acaba logo
     }    
     
-    public void tocar(SonsVoz somVoz, int volume) {
+    public void tocarV(SonsVoz somVoz, int volume) {
         pararMusicaCurto();
         
         if (somVoz!= SonsVoz.NENHUMA_MUSICA){
@@ -32,7 +32,7 @@ public class Radio {
         
     }
 
-    public void tocar(SonsFundo somFundo, int volume, boolean repetir) {
+    public void tocarF(SonsFundo somFundo, int volume, boolean repetir) {
         pararMusicaFundo(); // se vai tocar outra, parar a atual
 
         if (somFundo != SonsFundo.NENHUMA_MUSICA) {
