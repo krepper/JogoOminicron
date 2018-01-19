@@ -54,6 +54,7 @@ public class Biblioteca {
  
     public enum SonsCurtos {
         //BIBLIOTECA DOS SONS CURTOS
+        NENHUMA_MUSICA("- Nenhuma musica -", null, null),
         PARAFUSO("Parafuso - MP3", "arquivos/efeitos/parafuso.mp3", Formatos.MP3),
         LEVELUP("Levelup - MP3", "arquivos/efeitos/levelup.mp3", Formatos.MP3),
         HIT1("Hit1 - MP3", "arquivos/efeitos/hit1.mp3", Formatos.MP3),

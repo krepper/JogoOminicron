@@ -3,7 +3,15 @@ ID TECLAS
 
 backSpace = 8
 
-Return / Enter =  13
+Return / Enter =  10
+
+Delete = 127
+
+End = 35
+
+Pg Down = 34
+
+Esc = 27
 
 + = 43
 
@@ -15,7 +23,9 @@ Shift = 16
 
 Ctrl = 17
 
-Espaço = 32
+Alt = 18
+
+EspaÃ§o = 32
 
 0 = 48
 
@@ -36,3 +46,11 @@ Espaço = 32
 8 = 56
 
 9 = 57
+
+Set. Baixo = 40
+
+Set. Direita = 39
+
+Set. Cima = 38
+
+Set. Esquerda = 37

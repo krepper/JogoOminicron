@@ -7,13 +7,10 @@ package gui;
 
 import audio.Biblioteca;
 import audio.Biblioteca.SonsVoz;
-import audio.PlayerMp3Wav;
 import audio.Radio;
 import java.awt.Dimension;
 import java.awt.Frame;
 import java.awt.Toolkit;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
@@ -29,115 +26,40 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
-
-
 /**
  *
  * @author Biblioteca bc
  */
 public class Janela extends Frame {
     
-    public Radio radio;
+    public Radio radio; // Inicia novo Rádio
     private final GroupLayout layout = new GroupLayout(this);
     
-    String imgFundo;
-    
-    // VARIÁVEIS FASE MAKER
-    PlayerMp3Wav playerMusicaVoz;
-    Thread threadMusicaVoz;
-    int respostaCerta;
-    SonsVoz vozPrincipal;
-    String vozAjuda;
-    boolean ganhou = false;
-    int opcao;
-    // VARIÁVEIS FASE MAKER - FIM
-    
+    String imgFundo = ("arquivos/logo.png"); // Seta imagem de fundo do objeto (fase/menu);
      
-    public Janela(){
-        imgFundo = ("arquivos/logo.png");
-        radio = new Radio();
-        criaInterface();
-        //inicioMenu();
+    public Janela(){ // Cria novo objeto
+        radio = new Radio(); // Inicia rádio
+        criaInterface(); // Cria interface da fase/menu
     }
     
-    /* FASE MAKER */
     
-    void mudaJanela(String nome){
-        this.setTitle(nome);
-    }
-    
-    void mutar(){
+    void mutar(){ // Tirar todos os áudios
         radio.tocarF(Biblioteca.SonsFundo.NENHUMA_MUSICA, 50, false); //PAUSA A MÚSICA DE FUNDO
         radio.tocarV(Biblioteca.SonsVoz.NENHUMA_MUSICA, 50); //PAUSA A MÚSICA DE FUNDO
+        radio.tocarC(Biblioteca.SonsCurtos.NENHUMA_MUSICA, NORMAL); //PAUSA ALGUM SOM CURTO
     }
     
-//    void iniciarVoz(String arquivo, int volume, boolean repetir){
-//        playerMusicaVoz = new PlayerMp3Wav(arquivo, volume, repetir);
-//        threadMusicaVoz = new Thread(playerMusicaVoz);
-//        threadMusicaVoz.start();
-//    }
-    
-    void iniciarVoz(SonsVoz master, int volume){
+    void iniciarVoz(SonsVoz master, int volume){ // INICIA UMA VOZ 
         radio.tocarV(master, volume);
     }
     
-    /*
-    EXEMPLO:
-    vozMenu = Biblioteca.SonsVoz.INTRODUCAO 
-    teclaConfirmar = 10 (enter) [teclaConfirmar recebe ID da tecla]
-    
-    */
-    
-    int rodarMenu(SonsVoz vozP){
-        radio.tocarV(vozP, NORMAL);
-      
-        this.addKeyListener(new KeyAdapter() {       
-        @Override
-        public void keyPressed(KeyEvent tecla) {
-           
-            radio.tocarC(Biblioteca.SonsCurtos.BUTTON_POSITIVE, 05);
-            //menu inicial
-   
-            opcao = tecla.getKeyCode();       
-         
-        }
-        });       
-        
-        return opcao;
+    void iniciarFundo(Biblioteca.SonsFundo master, int volume){ // INICIA O SOM DE FUNDO
+        radio.tocarF(master, volume, true);
     }
     
-    boolean rodarFase(){
-        mutar();
-        radio.tocarV(vozPrincipal, 80);
-        
-        this.addKeyListener(new KeyAdapter() {
-            int erros = 0; 
-
-            @Override
-                public void keyPressed(KeyEvent e) {
-                System.out.println("clicou " + e.getKeyCode());
-                radio.tocarC(Biblioteca.SonsCurtos.BUTTON_POSITIVE, 05);
-                if (e.getKeyCode() == respostaCerta){
-                    ganhou = true;
-                } else {
-                    erros++;
-                }
-                                 
-                System.out.print("Número de erros: ");
-                System.out.println(erros);
-                if (erros==3){ // CASO ERRE 3 VEZES ÁUDIO DE AJUDA É EXECUTADO
-                    radio.tocarV(vozPrincipal, 80); 
-                    erros=0;
-                   }
-                }
-            
-
-        });
-
-        return ganhou;
+    void iniciarCurto(Biblioteca.SonsCurtos master, int volume){ // INICIA UM SOM CURTO
+        radio.tocarC(master, volume);
     }
-    
-    /* FIM FASE MAKER */  
     
 
     private void criaInterface() {
