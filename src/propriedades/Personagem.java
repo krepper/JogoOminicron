@@ -5,6 +5,9 @@
  */
 package propriedades;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -33,18 +36,40 @@ public class Personagem {
         FileWriter arquivo = new FileWriter(nome+".txt");
         PrintWriter gravarArquivo = new PrintWriter(arquivo);
         
-        gravarArquivo.printf("+-- "+nome+" --+%n");
-        gravarArquivo.printf("FORÇA = "+fr+"%n");
-        gravarArquivo.printf("CONSTITUIÇÃO = "+con+"%n");
-        gravarArquivo.printf("INTELIGÊNCIA = "+inte+"%n");
-        gravarArquivo.printf("EXP = "+exp+"%n");
-        gravarArquivo.printf("NÍVEL = "+nivel+"%n");
-        gravarArquivo.printf("FASE = "+fase+"%n");
-        gravarArquivo.printf("+------- FIM -------+%n");
+        gravarArquivo.printf(nome+"%n");
+        gravarArquivo.printf(fr+"%n");
+        gravarArquivo.printf(con+"%n");
+        gravarArquivo.printf(inte+"%n");
+        gravarArquivo.printf(exp+"%n");
+        gravarArquivo.printf(nivel+"%n");
+        gravarArquivo.printf(fase+"%n");
         
         arquivo.close();
         
         System.out.println("ARQUIVO GRAVADO COM SUCESSO");
         
+    }
+    
+    public void lerPer() throws FileNotFoundException, IOException{
+            BufferedReader br = new BufferedReader(new FileReader(nome+".txt")); 
+            
+	    nome = br.readLine(); 
+            fr = Integer.parseInt(br.readLine());
+            con = Integer.parseInt(br.readLine());
+            inte = Integer.parseInt(br.readLine());
+            exp = Integer.parseInt(br.readLine());
+            nivel = Integer.parseInt(br.readLine());
+            fase = Integer.parseInt(br.readLine());
+            
+//            System.out.println(nome); 
+//            System.out.println(fr); 
+//            System.out.println(con); 
+//            System.out.println(inte); 
+//            System.out.println(exp); 
+//            System.out.println(nivel); 
+//            System.out.println(fase); 
+             
+            
+            br.close(); 
     }
 }

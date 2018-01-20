@@ -23,6 +23,18 @@ public class faseMaker {
     public static boolean iniciarFase1 = false;
     public static boolean iniciarFase2 = false;
     
+    public static void carregarFase(int id) throws IOException{
+        if(id==1){
+            iniciarFase1 = true;
+            fase1();
+        }
+        
+        if(id==2){
+            iniciarFase2 = true;
+            fase2();
+        }
+    }
+    
     public static void menu(){
         if(iniciarMenu == true){
             Janela menu = new Janela();
@@ -45,29 +57,52 @@ public class faseMaker {
                     
                     switch(opcao){
                         case 10:
-                        iniciarMenu = false;
-                        iniciarFase1 = true;
-                        menu.setVisible(false);
-                    {
-                        try {
-                            fase1();
-                        } catch (IOException ex) {
-                            System.out.println("NÃO FOI POSSÍVEL EXECUTAR FASE (PROBLEMA NA GRAVAÇÃO DE PERSONAGEM)");
-                        }
-                    }
-                        break;
+                            iniciarMenu = false;
+                            iniciarFase1 = true;
+                            menu.mutar();
+                            menu.setVisible(false);
                     
-                    case 27:
-                        System.exit(0);
-                        break;
+                            {   try {
+                                fase1();
+                            } catch (IOException ex) {
+                                System.out.println("NÃO FOI POSSÍVEL EXECUTAR FASE (PROBLEMA NA GRAVAÇÃO DE PERSONAGEM)");
+                            }   }
+                        
+                            break;
+                    
+                        case 27:
+                            System.exit(0);
+                            break;
+                        
+                        case 16:
+                            
+                            personagens.pi.nome = "Pi";
+                        
+                            {      try {
+                                personagens.pi.lerPer();
+                            } catch (IOException ex) {
+                                System.out.println("NÃO FOI POSSÍVEL LER O ARQUIVO");
+                            }   }
+                        
+                            iniciarMenu = false;
+                            menu.mutar();
+                            menu.setVisible(false);
+                            
+                            {   try {
+                                carregarFase(personagens.pi.fase);
+                            } catch (IOException ex) {
+                                System.out.println("NÃO FOI POSSÍVEL LER O ARQUIVO");
+                            }   }
+                        
+                            break;
                 
-                    case 32:
-                        System.out.println("Repetindo áudio... "); // REPETE O ÁUDIO DO MENU
-                        menu.iniciarVoz(audio.Biblioteca.SonsVoz.INTRODUCAO, 100);
-                        break;  
+                        case 32:
+                            System.out.println("Repetindo áudio... "); // REPETE O ÁUDIO DO MENU
+                            menu.iniciarVoz(audio.Biblioteca.SonsVoz.INTRODUCAO, 100);
+                            break;  
                 
-                    default:
-                        break;
+                        default:
+                            break;
                     }
          
                 }
@@ -98,8 +133,7 @@ public class faseMaker {
             personagens.pi.inte = 100;
             
             personagens.pi.salvarPer();
-            
-            
+           
             fase1.iniciarFundo(Biblioteca.SonsFundo.BACKGROUND1, 20);
             fase1.iniciarVoz(audio.Biblioteca.SonsVoz.FASE1_PERGUNTA1, 100);
             
@@ -115,17 +149,29 @@ public class faseMaker {
                     System.out.println(opcao);
                     
                     switch(opcao){
-                        case 39:
+                        case 39: //OPCAO CERTA
                         iniciarFase1 = false;
                         iniciarFase2 = true;
+                        
+                        personagens.pi.fase = 2;
+                        personagens.pi.exp = personagens.pi.exp+150;
+                        
+                        fase1.mutar();
+                        
+                        {   try {
+                            personagens.pi.salvarPer();
+                        } catch (IOException ex) {
+                            System.out.println("ERRO AO SALVAR ARQUIVO.");
+                        }   }
+                    
+                    
                         fase1.setVisible(false);
-                    {
-                        try {
+                        
+                        {   try {
                             fase2();
                         } catch (IOException ex) {
                             System.out.println("NÃO FOI POSSÍVEL EXECUTAR FASE (PROBLEMA NA GRAVAÇÃO DE PERSONAGEM)");
-                        }
-                    }
+                        }   }
    
                         break;
                 
@@ -160,6 +206,8 @@ public class faseMaker {
             personagens.pi.fase = 2;
             personagens.pi.salvarPer();
             
+            
+            personagens.pi.lerPer();
             
             fase2.iniciarFundo(Biblioteca.SonsFundo.BACKGROUND1, 20);
             fase2.iniciarVoz(audio.Biblioteca.SonsVoz.FASE1_PERGUNTA1, 100);

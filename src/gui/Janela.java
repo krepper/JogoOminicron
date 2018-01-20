@@ -44,9 +44,8 @@ public class Janela extends Frame {
     
     
     void mutar(){ // Tirar todos os áudios
-        radio.tocarF(Biblioteca.SonsFundo.NENHUMA_MUSICA, 50, false); //PAUSA A MÚSICA DE FUNDO
-        radio.tocarV(Biblioteca.SonsVoz.NENHUMA_MUSICA, 50); //PAUSA A MÚSICA DE FUNDO
-        radio.tocarC(Biblioteca.SonsCurtos.NENHUMA_MUSICA, NORMAL); //PAUSA ALGUM SOM CURTO
+        radio.pararMusicaFundo();
+        radio.pararMusicaCurto();//PAUSA A MÚSICA DE FUNDO
     }
     
     void iniciarVoz(SonsVoz master, int volume){ // INICIA UMA VOZ 

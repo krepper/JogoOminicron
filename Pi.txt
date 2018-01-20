@@ -1,8 +1,7 @@
-+-- Pi --+
-FORÇA = 100
-CONSTITUIÇÃO = 500
-INTELIGÊNCIA = 100
-EXP = 150
-NÍVEL = 1
-FASE = 2
-+------- FIM -------+
+Pi
+100
+500
+100
+300
+1
+2
