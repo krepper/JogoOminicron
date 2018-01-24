@@ -29,6 +29,9 @@ public class Personagem {
     public int fr; // FORÇA
     public int con; // CONSTITUIÇÃO
     public int inte; // INTELIGÊNCIA
+    
+    public int cash; // MOEDA
+    
         
     
     
@@ -43,6 +46,9 @@ public class Personagem {
         gravarArquivo.printf(exp+"%n");
         gravarArquivo.printf(nivel+"%n");
         gravarArquivo.printf(fase+"%n");
+
+        gravarArquivo.printf(cash+"%n");
+
         
         arquivo.close();
         
@@ -60,6 +66,9 @@ public class Personagem {
             exp = Integer.parseInt(br.readLine());
             nivel = Integer.parseInt(br.readLine());
             fase = Integer.parseInt(br.readLine());
+
+            cash = Integer.parseInt(br.readLine());
+
             
 //            System.out.println(nome); 
 //            System.out.println(fr); 

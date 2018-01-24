@@ -28,7 +28,7 @@ import javax.swing.SwingConstants;
 
 /**
  *
- * @author Biblioteca bc
+ * @author UFPR PALOTINA
  */
 public class Janela extends Frame {
     
@@ -43,25 +43,27 @@ public class Janela extends Frame {
     }
     
     
-    void mutar(){ // Tirar todos os áudios
+
+    public void mutar(){ // Tirar todos os áudios
+
         radio.pararMusicaFundo();
         radio.pararMusicaCurto();//PAUSA A MÚSICA DE FUNDO
     }
     
-    void iniciarVoz(SonsVoz master, int volume){ // INICIA UMA VOZ 
+    public void iniciarVoz(SonsVoz master, int volume){ // INICIA UMA VOZ 
         radio.tocarV(master, volume);
     }
     
-    void iniciarFundo(Biblioteca.SonsFundo master, int volume){ // INICIA O SOM DE FUNDO
+    public void iniciarFundo(Biblioteca.SonsFundo master, int volume){ // INICIA O SOM DE FUNDO
         radio.tocarF(master, volume, true);
     }
     
-    void iniciarCurto(Biblioteca.SonsCurtos master, int volume){ // INICIA UM SOM CURTO
+    public void iniciarCurto(Biblioteca.SonsCurtos master, int volume){ // INICIA UM SOM CURTO
         radio.tocarC(master, volume);
     }
     
 
-    private void criaInterface() {
+    public void criaInterface() {
 
         // Panel para os comandos da musica de fundo
         JPanel painelSonsFundo = new JPanel();
