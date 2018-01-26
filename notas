@@ -1,0 +1,59 @@
+// MENU //
+
+/- Começa com a história do jogo
+
+/- Fala os comandos
+
+/*
+  ENTER = INICIA JOGO
+  SHIFT = CARREGA JOGO SALVO (PODE TROCAR O BOTÃO)
+  ESPAÇO = REPETE ÁUDIO
+  ESC = FECHA O JOGO
+  ? = CONFIGURAÇÕES
+*/
+
+--------- // --------------------
+
+// FASE 1 //
+
+/- Áudio de introdução
+/- Descreve quem é o personagem do player
+/- Descreve os demais personagens
+
+*TERCEIRA PESSOA*
+/- Vamos construir o robô
+
+-- SET DE MADEIRA (INICIAL)
+
+1° Capacete Madeira | Con = 300 / For = 00 / Inte = 00 
+2° Armadura Madeira | Con = 500 / For = 00 / Inte = 06
+3° Botas de Madeira | Con = 120 / For = 00 / Inte = 00
+4° Luvas de Madeira | Con = 80  / For = 05 / Inte = 04
+5° Graveto          | Con = 0   / For = 10 / Inte = 08 
+
+- Total inicial dos status: Con = 1000 / 15 / 18
+
+- Falar as peças necessárias para serem construidas
+
+- QUESTS PARA BUSCAR MADEIRA E CONSTRUIR
+
+------------------------------------------------
+
+[AUDIO 0.1] 
+(SOM DE FUNDO = GARAGEM)
+- Descrever quem é o jogador
+- Descrever os demais personagens principais
+- *ESPAÇO PARA REPETIR ÁUDIO
+- *PRESSIONAR ENTER PARA CONTINUAR /
+
+[AUDIO 0.2]
+(SOM DE FUNDO = GARAGEM)
+- Descrever o que é necessário para montar o robô
+- *ESPAÇO PARA REPETIR ÁUDIO
+- *PRESSIONAR ENTER PARA IR PARA COLETA /
+
+1° Quest **
+
+Precisamos de madeira para construir o robô, podemos ir na  floresta buscar. Porém iremos contar com a sorte para dropar os itens certos, vamos levar nossa mochila.
+
+

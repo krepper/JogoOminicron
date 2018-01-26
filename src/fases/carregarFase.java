@@ -1,18 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package fases;
 
 import static fases.fase1.fase1;
 import static fases.fase2.fase2;
 import java.io.IOException;
 
-/**
- *
- * @author Biblioteca bc
- */
 public class carregarFase {
     
     public static boolean menu_principal = true;

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package gui;
 
 import audio.Biblioteca;
@@ -13,16 +8,12 @@ import javax.swing.JFrame;
 import propriedades.personagens;
 
 
-/**
- *
- * @author Biblioteca bc
- */
 
 public class faseMaker {
     public static boolean iniciarMenu = true;
     public static boolean iniciarFase1 = false;
     public static boolean iniciarFase2 = false;
-    
+ 
     public static void carregarFase(int id) throws IOException{
         if(id==1){
             iniciarFase1 = true;

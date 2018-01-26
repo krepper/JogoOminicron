@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package gui;
 
 import audio.Biblioteca;
@@ -26,10 +21,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
-/**
- *
- * @author UFPR PALOTINA
- */
 public class Janela extends Frame {
     
     public Radio radio; // Inicia novo Rádio
