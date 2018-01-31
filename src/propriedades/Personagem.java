@@ -22,6 +22,7 @@ public class Personagem {
     public int inte; // INTELIGÊNCIA
 
     public int cash; // MOEDA
+    
 
     public void salvarPer() throws IOException {
         FileWriter arquivo = new FileWriter(nome + ".txt");
