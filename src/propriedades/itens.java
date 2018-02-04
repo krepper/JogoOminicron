@@ -88,9 +88,4 @@ public class itens {
         }
     }
     
-    /*1° Capacete Madeira | Con = 300 / For = 00 / Inte = 00
-        2° Armadura Madeira | Con = 500 / For = 00 / Inte = 06
-        3° Botas de Madeira | Con = 120 / For = 00 / Inte = 00
-        4° Luvas de Pano | Con = 80  / For = 05 / Inte = 04
-        5° Graveto          | Con = 0   / For = 10 / Inte = 08 */
 }

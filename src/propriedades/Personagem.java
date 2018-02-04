@@ -14,7 +14,7 @@ public class Personagem {
     public int nivel;
     public int exp;
 
-    public int fase;
+    public String fase;
 
     // LINK: http://www.daemon.com.br/home/atributos-em-rpg/
     public int fr; // FORÇA
@@ -53,7 +53,7 @@ public class Personagem {
         inte = Integer.parseInt(br.readLine());
         exp = Integer.parseInt(br.readLine());
         nivel = Integer.parseInt(br.readLine());
-        fase = Integer.parseInt(br.readLine());
+        fase = br.readLine();
 
         cash = Integer.parseInt(br.readLine());
 

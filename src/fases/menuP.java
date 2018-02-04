@@ -40,13 +40,13 @@ public class menuP {
                             carregarFase.fase1 = true;
                             menu.mutar();
                             menu.setVisible(false);
-                             {
-                                try {
-                                    fase1.fase1();
-                                } catch (IOException ex) {
-                                    Logger.getLogger(menuP.class.getName()).log(Level.SEVERE, null, ex);
-                                }
-                            }
+			    
+			    {	try {
+				fases.fase1.introducao.fase();
+			    } catch (IOException ex) {
+				Logger.getLogger(menuP.class.getName()).log(Level.SEVERE, null, ex);
+			    }	    }
+                            
 
                             break;
 
