@@ -16,10 +16,11 @@ public class Personagem {
 
     public String fase;
 
-    // LINK: http://www.daemon.com.br/home/atributos-em-rpg/
+    // LINK: http://www.daemon.com.br/home/atributos-em-rpg/ (CONTEM A DESCRIÇÃO DE CADA ATRIBUTO)
     public int fr; // FORÇA
     public int con; // CONSTITUIÇÃO
     public int inte; // INTELIGÊNCIA
+    // FIM DOS ATRIBUTOS
 
     public int cash; // MOEDA
     

@@ -37,7 +37,7 @@ public class menuP {
                         case 10:
 
                             carregarFase.menu_principal = false;
-                            carregarFase.fase1 = true;
+                            carregarFase.fase1_introdução = true;
                             menu.mutar();
                             menu.setVisible(false);
 			    
