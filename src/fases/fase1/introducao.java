@@ -39,8 +39,6 @@ public class introducao {
 	    
 	    // INICIO DA FASE
 	    
-
-                // AUDIO 0.1 (ARQUIVO DE TEXTO)
 		
 		//fase1.iniciarVoz(audio.Biblioteca.SonsVoz.FASE1_PERGUNTA1, 100);
             
@@ -55,12 +53,18 @@ public class introducao {
                             System.out.println(opcao);
                     
                             switch(opcao){
-                                case 39: //Pular áudio;
-                        
+                                case 10: //Pular áudio;
+                                    carregarFase.fase1_introdução = false;
+                                    carregarFase.fase1_etapa1 = true;
                                     fase1_introdução.mutar();
-
-                                    
-   
+                                    fase1_introdução.setVisible(false);
+                            
+                                    {   try {
+                                        etapa1.fase();
+                                    } catch (IOException ex) {
+                                        System.out.println("Não foi possível executar nível 1.1");
+                                    }       }
+                                 
                                 break;
                 
                                 case 32:

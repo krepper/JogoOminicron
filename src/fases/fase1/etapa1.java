@@ -28,12 +28,17 @@ import gui.Janela;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
+import javax.swing.JFrame;
 
 public class etapa1 {
   
     public static void fase() throws IOException{
 	if(carregarFase.fase1_etapa1){
 	    Janela fase1_etapa1 = new Janela();
+            fase1_etapa1.setTitle("JOGO OMINICRON - FASE 1");
+            fase1_etapa1.setExtendedState(JFrame.MAXIMIZED_BOTH);
+            fase1_etapa1.setVisible(true);
+            System.out.println("Chegou na fase 2");
 	    
 	    fase1_etapa1.addKeyListener(new KeyAdapter() {       
                     int opcao;
