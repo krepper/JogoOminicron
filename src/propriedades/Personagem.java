@@ -23,49 +23,46 @@ public class Personagem {
     // FIM DOS ATRIBUTOS
 
     public int cash; // MOEDA
-    
 
     public void salvarPer() throws IOException {
-        FileWriter arquivo = new FileWriter(nome + ".txt");
-        PrintWriter gravarArquivo = new PrintWriter(arquivo);
+        try (FileWriter arquivo = new FileWriter(nome + ".txt")) {
+            PrintWriter gravarArquivo = new PrintWriter(arquivo);
 
-        gravarArquivo.printf(nome + "%n");
-        gravarArquivo.printf(fr + "%n");
-        gravarArquivo.printf(con + "%n");
-        gravarArquivo.printf(inte + "%n");
-        gravarArquivo.printf(exp + "%n");
-        gravarArquivo.printf(nivel + "%n");
-        gravarArquivo.printf(fase + "%n");
+            gravarArquivo.printf(nome + "%n");
+            gravarArquivo.printf(fr + "%n");
+            gravarArquivo.printf(con + "%n");
+            gravarArquivo.printf(inte + "%n");
+            gravarArquivo.printf(exp + "%n");
+            gravarArquivo.printf(nivel + "%n");
+            gravarArquivo.printf(fase + "%n");
 
-        gravarArquivo.printf(cash + "%n");
+            gravarArquivo.printf(cash + "%n");
 
-        arquivo.close();
-
-        System.out.println("ARQUIVO GRAVADO COM SUCESSO");
+            System.out.println("ARQUIVO GRAVADO COM SUCESSO");
+            
+            System.out.println(nome);
+        }
 
     }
 
     public void lerPer() throws FileNotFoundException, IOException {
-        BufferedReader br = new BufferedReader(new FileReader(nome + ".txt"));
-
-        nome = br.readLine();
-        fr = Integer.parseInt(br.readLine());
-        con = Integer.parseInt(br.readLine());
-        inte = Integer.parseInt(br.readLine());
-        exp = Integer.parseInt(br.readLine());
-        nivel = Integer.parseInt(br.readLine());
-        fase = br.readLine();
-
-        cash = Integer.parseInt(br.readLine());
-
-//            System.out.println(nome); 
-//            System.out.println(fr); 
-//            System.out.println(con); 
-//            System.out.println(inte); 
-//            System.out.println(exp); 
-//            System.out.println(nivel); 
+        try (BufferedReader br = new BufferedReader(new FileReader(nome + ".txt"))) {
+            nome = br.readLine();
+            fr = Integer.parseInt(br.readLine());
+            con = Integer.parseInt(br.readLine());
+            inte = Integer.parseInt(br.readLine());
+            exp = Integer.parseInt(br.readLine());
+            nivel = Integer.parseInt(br.readLine());
+            fase = br.readLine();
+            cash = Integer.parseInt(br.readLine());
+//            System.out.println(nome);
+//            System.out.println(fr);
+//            System.out.println(con);
+//            System.out.println(inte);
+//            System.out.println(exp);
+//            System.out.println(nivel);
 //            System.out.println(fase); 
 //            System.out.println(cash);
-        br.close();
+        }
     }
 }

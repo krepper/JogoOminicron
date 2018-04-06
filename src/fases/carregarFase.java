@@ -1,41 +1,36 @@
 package fases;
 
+// FASES
 
+import gui.Janela;
 import java.io.IOException;
+import propriedades.personagens;
 
 public class carregarFase {
-    
-    public static boolean menu_principal = true;
-    
-    public static boolean fase1_introdução = false;
-    public static boolean fase1_etapa1 = false;
-    
-    public static boolean fase2 = false;
-    
-    public static void selecionarFase(String id) throws IOException{
-        if(id=="1"){
-            menu_principal = false;
-            
-            //FASE1
-            fase1_introdução = true;
-            fase1_etapa1 = false;
-            
-            //FASE2
-            fase2 = false;
-            
-            //fase1();
-        }
-        
-        if(id=="2"){
-            menu_principal = false;
-            
-            //FASE1
-            fase1_introdução = false;
-            fase1_etapa1 = false;
-            
-            //FASE2
-            fase2 = true;
-            //fase2();
+
+    public static void selecionarFase(String id, Janela fase) throws IOException {
+        personagens.pi.fase = id;
+        personagens.pi.salvarPer();
+
+        fase.mutar();
+        fase.setVisible(false);
+
+        switch (id) {
+            case "0":
+                menuP.menu();
+                break;
+
+            case "1":
+                jogo.id1();
+                break;
+
+            case "2":
+                jogo.id2();
+                break;
+
+            case "3":
+                jogo.id3();
+                break;
         }
     }
 }
