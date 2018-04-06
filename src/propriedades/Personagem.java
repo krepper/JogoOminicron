@@ -41,20 +41,22 @@ public class Personagem {
             System.out.println("ARQUIVO GRAVADO COM SUCESSO");
             
             System.out.println(nome);
+            
+            arquivo.close();
         }
 
     }
 
     public void lerPer() throws FileNotFoundException, IOException {
-        try (BufferedReader br = new BufferedReader(new FileReader(nome + ".txt"))) {
-            nome = br.readLine();
-            fr = Integer.parseInt(br.readLine());
-            con = Integer.parseInt(br.readLine());
-            inte = Integer.parseInt(br.readLine());
-            exp = Integer.parseInt(br.readLine());
-            nivel = Integer.parseInt(br.readLine());
-            fase = br.readLine();
-            cash = Integer.parseInt(br.readLine());
+        try (BufferedReader arquivo = new BufferedReader(new FileReader(nome + ".txt"))) {
+            nome = arquivo.readLine();
+            fr = Integer.parseInt(arquivo.readLine());
+            con = Integer.parseInt(arquivo.readLine());
+            inte = Integer.parseInt(arquivo.readLine());
+            exp = Integer.parseInt(arquivo.readLine());
+            nivel = Integer.parseInt(arquivo.readLine());
+            fase = arquivo.readLine();
+            cash = Integer.parseInt(arquivo.readLine());
 //            System.out.println(nome);
 //            System.out.println(fr);
 //            System.out.println(con);
@@ -63,6 +65,8 @@ public class Personagem {
 //            System.out.println(nivel);
 //            System.out.println(fase); 
 //            System.out.println(cash);
+
+            arquivo.close();
         }
     }
 }
