@@ -19,6 +19,11 @@ public class menuP {
         menu.setTitle("JOGO OMINICRON - MENU");
         menu.setExtendedState(JFrame.MAXIMIZED_BOTH);
         menu.setVisible(true);
+        
+        /*
+            Você ja pensou viver em um mundo sem tecnologias? Já imaginou que um dia as máquinas poderiam parar de funcionar? Sem eletricidade, sem comunicação, um mundo em que a tecnologia que nos dava conforto, está acabando com a cidade, pior ainda… as máquinas estão contaminadas por um vírus e se voltaram contra a humanidade… 
+            Música: No momento da narração toca uma música melancólica e grave no fundo, dando a impressão de um futuro desolador.
+        */
 
         menu.iniciarVoz(audio.Biblioteca.SonsVoz.INTRODUCAO, 100);
         menu.iniciarFundo(Biblioteca.SonsFundo.BACKGROUND1, 20);
